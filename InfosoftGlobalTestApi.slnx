@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="InfosoftGlobalTestApi.Application/InfosoftGlobalTestApi.Application.csproj" />
+  <Project Path="InfosoftGlobalTestApi.Domain/InfosoftGlobalTestApi.Domain.csproj" />
+  <Project Path="InfosoftGlobalTestApi.Infrastructure/InfosoftGlobalTestApi.Infrastructure.csproj" />
+  <Project Path="InfosoftGlobalTestApi/InfosoftGlobalTestApi.Api.csproj" />
+</Solution>
