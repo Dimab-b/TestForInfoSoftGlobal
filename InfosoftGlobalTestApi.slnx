@@ -2,8 +2,8 @@
   <Folder Name="/Элементы решения/">
     <File Path=".gitignore" />
   </Folder>
-  <Project Path="../../../../../../source/repos/InfosoftGlobalTestApi/InfosoftGlobalTestApi.Application/InfosoftGlobalTestApi.Application.csproj" />
-  <Project Path="../../../../../../source/repos/InfosoftGlobalTestApi/InfosoftGlobalTestApi.Domain/InfosoftGlobalTestApi.Domain.csproj" />
-  <Project Path="../../../../../../source/repos/InfosoftGlobalTestApi/InfosoftGlobalTestApi.Infrastructure/InfosoftGlobalTestApi.Infrastructure.csproj" />
-  <Project Path="../../../../../../source/repos/InfosoftGlobalTestApi/InfosoftGlobalTestApi/InfosoftGlobalTestApi.Api.csproj" />
+  <Project Path="InfosoftGlobalTestApi.Application/InfosoftGlobalTestApi.Application.csproj" />
+  <Project Path="InfosoftGlobalTestApi.Domain/InfosoftGlobalTestApi.Domain.csproj" />
+  <Project Path="InfosoftGlobalTestApi.Infrastructure/InfosoftGlobalTestApi.Infrastructure.csproj" />
+  <Project Path="InfosoftGlobalTestApi/InfosoftGlobalTestApi.Api.csproj" />
 </Solution>
