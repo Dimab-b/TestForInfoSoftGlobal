@@ -1,5 +1,6 @@
 ﻿using InfosoftGlobalTestApi.Domain.Common;
 using InfosoftGlobalTestApi.Domain.Common.ValueObjects;
+using InfosoftGlobalTestApi.Domain.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -37,10 +38,10 @@ namespace InfosoftGlobalTestApi.Domain.Breeders
         public static Breeder Create(string name , string surname , Email email)
         {
             if (string.IsNullOrWhiteSpace(name))
-                throw new ArgumentNullException("Name must be filled");
+                throw new BenefitDataException("Name must be filled");
 
             if (string.IsNullOrWhiteSpace(surname))
-                throw new ArgumentNullException("Surname must be filled");
+                throw new BenefitDataException("Surname must be filled");
 
             var breeder = new Breeder(Guid.NewGuid() , name , surname , email);
 
@@ -49,17 +50,18 @@ namespace InfosoftGlobalTestApi.Domain.Breeders
         }
 
 
-        public void UseFreeLimit()
+        public void EnsureHasLimits()
         {
             if (Benefit == null)
-                throw new Exception("Benefit data is missing for this breeder.");
+                throw new BenefitDataException("Benefit data is missing for this breeder.");
 
             if (!Benefit.HasAvailableLimits())
-                throw new Exception("Publish attempt failed - limits exceeded.");
-
+                throw new BenefitLimitException(this.Benefit.FreeLimit , this.Benefit.UsedCount);
+        }
+        public void UseFreeLimit()
+        {
             Benefit.IncrementUsage();
         }
-
 
     }
 }
