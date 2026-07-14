@@ -25,11 +25,9 @@ namespace InfosoftGlobalTestApi.Domain.Litters
             CreatedAt = DateTime.UtcNow;
         }
 
-        public static Litter Create(Guid BreederId)
+        public static Litter Create(Guid breederId)
         {
-            var litter = new Litter(Guid.NewGuid() , BreederId , Status.Draft);
-
-            return litter;
+            return new Litter(Guid.NewGuid() , breederId , Status.Draft);
         }
 
 
