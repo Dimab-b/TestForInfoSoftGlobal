@@ -20,7 +20,7 @@ namespace InfosoftGlobalTestApi.Domain.Breeders
             UsedCount = usedCount;
         }
 
-        protected BreederBenefit() { } 
+        private BreederBenefit() { } 
 
         public bool HasAvailableLimits() => UsedCount < FreeLimit;
 

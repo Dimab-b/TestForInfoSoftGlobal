@@ -1,6 +1,7 @@
 ﻿using InfosoftGlobalTestApi.Domain.AuditLogs;
 using InfosoftGlobalTestApi.Domain.Breeders;
 using InfosoftGlobalTestApi.Domain.Common;
+using InfosoftGlobalTestApi.Domain.Common.ValueObjects;
 using InfosoftGlobalTestApi.Domain.Litters;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -34,9 +35,13 @@ namespace InfosoftGlobalTestApi.Infrastructure.Persistance
             {
                 Id = testBreederId,
                 FirstName = "Test",
-                LastName = "Breeder",
-                Email = "test@breeder.com", 
+                LastName = "Breeder", 
                 CreatedAt = DateTime.UtcNow
+            });
+            modelBuilder.Entity<Breeder>().OwnsOne(b => b.Email).HasData(new
+            {
+                BreederId = testBreederId, 
+                Value = "test@breeder.com" 
             });
 
             modelBuilder.Entity<BreederBenefit>().HasData(new

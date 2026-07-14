@@ -1,4 +1,5 @@
 ﻿using InfosoftGlobalTestApi.Domain.Common;
+using InfosoftGlobalTestApi.Domain.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -31,15 +32,21 @@ namespace InfosoftGlobalTestApi.Domain.Litters
         }
 
 
-        public void Publish(Guid currentBreederId)
+        public void EnsureCanBePublished(Guid currentBreederId)
         {
             if (this.BreederId != currentBreederId)
-                throw new Exception("You do not own this litter.");
+                throw new LitterNoOwnException("You do not own this litter.");
 
             if (Status != Status.Approved)
-                throw new Exception($"Litter cannot be published. Current status: {this.Status}.");
+                throw new InvalidLitterStatusException($"Litter cannot be published. Current status: {this.Status}.");
+        }
 
+        public void Publish()
+        {
             this.Status = Status.Published;
+
+            AddDomainEvent(new LitterPublishedDomainEvent(this.Id, this.BreederId));
         }
     }
 }
+
